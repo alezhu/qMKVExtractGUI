@@ -12,7 +12,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_library(${PROJECT_NAME} STATIC
   include/Helper.h
+  include/Logger.h
   Helper.cpp
+  Logger.cpp
 )
 target_include_directories(${PROJECT_NAME} PUBLIC include )
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core core)
