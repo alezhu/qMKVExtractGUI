@@ -9,7 +9,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(PROJECT_SOURCES)
+set(PROJECT_SOURCES
+    include/Application.h
+    Application.cpp
+    MainWindow.cpp
+    MainWindow.h
+    MainWindow.ui
+)
 
 add_library(${PROJECT_NAME} ${PROJECT_SOURCES} )
 target_include_directories(${PROJECT_NAME} PUBLIC include )
