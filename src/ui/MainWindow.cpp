@@ -3,6 +3,8 @@
 #include "Helper.h"
 #include "SettingsManager.h"
 
+#include <Logger.h>
+
 MainWindow::MainWindow(QWidget* parent)
         : QMainWindow(parent)
         , ui(new Ui::MainWindow)
@@ -13,7 +15,7 @@ MainWindow::MainWindow(QWidget* parent)
         QString title("0 1\"2:3#4\\5[6]");
         title += helper.EscapeString(title);
         setWindowTitle(title);
-        QSharedPointer<qmkv::extract::Logger> logger;
+        QSharedPointer<qmkv::extract::Logger> logger(new qmkv::extract::Logger());
         qmkv::model::SettingsManager sm{logger,this};
         auto sett = sm.get();
         sett->setShowPopup(true);
