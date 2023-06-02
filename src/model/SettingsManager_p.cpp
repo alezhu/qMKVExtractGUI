@@ -5,7 +5,7 @@
 namespace qmkv::model
 {
 
-    SettingsManagerPrivate::SettingsManagerPrivate(QSharedPointer<extract::Logger> logger, QObject *parent)
+    SettingsManagerPrivate::SettingsManagerPrivate(extract::Logger& logger, QObject *parent)
         : QObject{parent},
           m_filter{logger, this},
           m_logger{logger}
@@ -51,7 +51,7 @@ namespace qmkv::model
     }
     void SettingsManagerPrivate::_load()
     {
-        m_logger->log(tr("Begin loading settings..."));
+        m_logger.log(tr("Begin loading settings..."));
 
         auto meta = m_Settings.metaObject();
         auto count = meta->propertyCount();
@@ -66,12 +66,12 @@ namespace qmkv::model
                 {
                   auto msg = tr("Error reading %1!: %2").arg(property.name(),value.toString());
                   qDebug() << msg;
-                  m_logger->log(msg);
+                  m_logger.log(msg);
                 };
             }
         }
 
-        m_logger->log(tr("Finished loading settings!"));
+        m_logger.log(tr("Finished loading settings!"));
     }
 
     void SettingsManagerPrivate::onMkvToolnixPathChanged(QStringView value)

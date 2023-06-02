@@ -2,7 +2,6 @@
 
 #include <Logger.h>
 #include <QObject>
-#include <QSharedPointer>
 
 namespace qmkv::model
 {
@@ -11,14 +10,14 @@ namespace qmkv::model
   {
     Q_OBJECT
   public:
-    explicit SettingsFilter(QSharedPointer<qmkv::extract::Logger> logger, QObject *parent = nullptr);
+    explicit SettingsFilter(qmkv::extract::Logger& logger, QObject *parent = nullptr);
 
     // QObject interface
   public:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
     private:
-    QSharedPointer<qmkv::extract::Logger> m_logger;
+    qmkv::extract::Logger& m_logger;
   };
 
 }

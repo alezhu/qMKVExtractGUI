@@ -6,15 +6,15 @@ namespace qmkv::model
 
   bool SettingsFilter::eventFilter(QObject *watched, QEvent *event)
   {
-    if (event->type() == QEvent::UpdateRequest && m_logger != nullptr)
+    if (event->type() == QEvent::UpdateRequest && nullptr != &m_logger)
     {
-      m_logger->log(tr("Saving settings..."));
+      m_logger.log(tr("Saving settings..."));
     };
     return false;
   }
 
   qmkv::model::SettingsFilter::SettingsFilter(
-      QSharedPointer<extract::Logger> logger, QObject *parent)
+      extract::Logger& logger, QObject *parent)
       : QObject(parent),
         m_logger(logger)
   {

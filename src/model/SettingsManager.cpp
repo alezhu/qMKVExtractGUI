@@ -3,7 +3,7 @@
 namespace qmkv::model
 {
 
-  SettingsManager::SettingsManager(QSharedPointer<extract::Logger> logger, QObject *parent)
+  SettingsManager::SettingsManager(extract::Logger& logger, QObject *parent)
         : QObject{parent},
           d_ptr(new SettingsManagerPrivate(logger,this))
     {

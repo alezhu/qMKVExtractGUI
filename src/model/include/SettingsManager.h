@@ -12,7 +12,7 @@ namespace qmkv::model
   {
     Q_OBJECT
   public:
-    explicit SettingsManager(QSharedPointer<extract::Logger> logger, QObject *parent = nullptr);
+    explicit SettingsManager(extract::Logger &logger, QObject *parent = nullptr);
 
     Settings *get();
 
