@@ -3,18 +3,16 @@
 #include "Helper.h"
 #include "SettingsManager.h"
 
-#include <Logger.h>
 
-MainWindow::MainWindow(QWidget* parent)
-        : QMainWindow(parent)
-        , ui(new Ui::MainWindow)
-{
-        ui->setupUi(this);
-
+MainWindow::~MainWindow() {
+    delete ui;
 }
 
-MainWindow::~MainWindow()
-{
-        delete ui;
-}
+MainWindow::MainWindow(qmkv::model::SettingsManager &settingsManager, qmkv::model::Model &model, QWidget *parent)
+        : QMainWindow(parent),
+          ui(new Ui::MainWindow),
+          m_model{model},
+          m_settingsManager{settingsManager} {
+    ui->setupUi(this);
 
+}
