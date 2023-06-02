@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QObject>
+#include "common.h"
+
 namespace qmkv::model
 {
     class Model : public QObject
@@ -9,6 +11,7 @@ namespace qmkv::model
     public:
         explicit Model(QObject *parent = nullptr);
 
-    signals:
+        Q_PROPERTY_STD_EX(QString, QStringView, MKVToolnixPath);
+
     };
 }
