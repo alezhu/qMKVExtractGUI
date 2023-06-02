@@ -353,5 +353,25 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnBrowseMKVToolnixPath</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>btnBrowseMKVToolnixPath_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>819</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>925</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>btnBrowseMKVToolnixPath_clicked()</slot>
+ </slots>
 </ui>

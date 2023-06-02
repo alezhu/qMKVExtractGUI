@@ -25,4 +25,7 @@ private:
     qmkv::model::SettingsManager &m_settingsManager;
     qmkv::model::Model &m_model;
 
+public slots:
+
+    void btnBrowseMKVToolnixPath_clicked();
 };
