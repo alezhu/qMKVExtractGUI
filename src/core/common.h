@@ -8,7 +8,7 @@
   Q_SIGNAL void name##Changed(const exttype);
 
 #define Q_PROPERTY_STD_EX(type, exttype, name) \
-  public: Q_PROPERTY(exttype name READ name WRITE set##name NOTIFY name##Changed) \
+  Q_PROPERTY(exttype name READ name WRITE set##name NOTIFY name##Changed) \
   Q_PROPERTY_STD_COMMON(type, exttype, name)
 
 #define Q_PROPERTY_STD(type, name) Q_PROPERTY_STD_EX(type, type, name)
