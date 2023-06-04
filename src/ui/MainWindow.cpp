@@ -11,8 +11,8 @@ MainWindow::~MainWindow() {
 MainWindow::MainWindow(qmkv::model::SettingsManager &settingsManager, qmkv::model::Model &model, QWidget *parent)
         : QMainWindow(parent),
           ui(new Ui::MainWindow),
-          m_model{model},
-          m_settingsManager{settingsManager} {
+      m_settingsManager{settingsManager},
+      m_model{model} {
     ui->setupUi(this);
 
     connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, ui->txtMKVToolnixPath,
@@ -40,4 +40,5 @@ void MainWindow::btnBrowseMKVToolnixPath_clicked() {
         }
     }
 }
+
 
