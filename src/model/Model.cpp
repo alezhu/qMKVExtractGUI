@@ -14,7 +14,10 @@ namespace qmkv::model {
               m_logger{logger},
               m_helper{helper},
               m_settingsManager{settingsManager},
+              m_extractFactory{extractFactory},
               m_showErrorMessage{showErrorMessage} {
+        _createExtract();
+        connect(this, &Model::MKVToolnixPathChanged, this, &Model::_createExtract);
 
     }
 
@@ -42,4 +45,10 @@ namespace qmkv::model {
         m_MKVToolnixPath = path;
         emit MKVToolnixPathChanged(m_MKVToolnixPath);
     }
+
+    void Model::_createExtract() {
+        m_extract.reset(m_extractFactory.create(MKVToolnixPath()));
+    }
+
+
 }
