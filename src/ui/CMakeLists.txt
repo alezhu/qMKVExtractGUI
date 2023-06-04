@@ -10,19 +10,21 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(PROJECT_SOURCES
-    include/Application.h
-    Application.cpp
-    MainWindow.cpp
-    MainWindow.h
-    MainWindow.ui
+        include/Application.h
+        Application.cpp
+        MainWindow.cpp
+        MainWindow.h
+        MainWindow.ui
+        utils.h
+        utils.cpp
 )
 
-add_library(${PROJECT_NAME} ${PROJECT_SOURCES} )
-target_include_directories(${PROJECT_NAME} PUBLIC include )
+add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-target_link_libraries(${PROJECT_NAME}  PRIVATE Qt${QT_VERSION_MAJOR}::Widgets extract model)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets extract model)
 
 
