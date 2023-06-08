@@ -30,5 +30,8 @@ namespace qmkv::model {
         const std::function<void(QAnyStringView, QWidget *)> &m_showErrorMessage;
 
         void _createExtract();
+
+        bool
+        _setMKVToolnixPath(const QStringView value, const bool check, const bool clearIfError, const bool showError);
     };
 }

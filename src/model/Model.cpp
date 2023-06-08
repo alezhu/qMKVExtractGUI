@@ -31,24 +31,36 @@ namespace qmkv::model {
     }
 
     void Model::setMKVToolnixPath(const QStringView value) {
-        if (m_MKVToolnixPath == value) return;
+        _setMKVToolnixPath(value, true, true, true);
+    }
+
+    bool Model::_setMKVToolnixPath(const QStringView value, const bool check, const bool clearIfError,
+                                   const bool showError) {
+        if (m_MKVToolnixPath == value) return true;
         auto path = value.trimmed().toString();
-
-        if (!QFile(core::pathCombine(path, m_helper->MKV_MERGE_GUI_FILENAME())).exists()
-            && !QFile(core::pathCombine(path, m_helper->MKV_MERGE_NEW_GUI_FILENAME())).exists()
-                ) {
-            path.clear();
-            auto msg = tr("The folder does not contain MKVToolnix!");
-            m_logger->log(msg);
-            qDebug() << msg;
-            m_showErrorMessage(msg, nullptr);
-        } else {
-            m_settingsManager->get()->setMkvToolnixPath(path);
-            m_logger->log(tr("Changing MkvToolnixPath"));
+        auto result = true;
+        if (check) {
+            if (!QFile(core::pathCombine(path, m_helper->MKV_MERGE_GUI_FILENAME())).exists()
+                && !QFile(core::pathCombine(path, m_helper->MKV_MERGE_NEW_GUI_FILENAME())).exists()
+                    ) {
+                path.clear();
+                auto msg = tr("The folder does not contain MKVToolnix!");
+                m_logger->log(msg);
+                qDebug() << msg;
+                if (showError) {
+                    m_showErrorMessage(msg, nullptr);
+                }
+                if (clearIfError) return false;
+                result = false;
+            }
         }
+        m_settingsManager->get()->setMkvToolnixPath(path);
+        m_logger->log(tr("Changing MkvToolnixPath"));
 
+        if (m_MKVToolnixPath == value) return result;
         m_MKVToolnixPath = path;
         emit MKVToolnixPathChanged(m_MKVToolnixPath);
+        return result;
     }
 
     void Model::_createExtract() {
