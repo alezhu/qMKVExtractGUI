@@ -16,6 +16,11 @@ namespace qmkv::model {
               m_settingsManager{settingsManager},
               m_extractFactory{extractFactory},
               m_showErrorMessage{showErrorMessage} {
+
+        auto path = m_settingsManager->get()->MkvToolnixPath();
+        if (!path.isEmpty()) {
+            setMKVToolnixPath(path);
+        }
         _createExtract();
         connect(this, &Model::MKVToolnixPathChanged, this, &Model::_createExtract);
 
