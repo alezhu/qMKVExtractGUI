@@ -10,6 +10,7 @@ namespace qmkv::model {
     class Model : public QObject {
     Q_OBJECT
 
+    Q_PROPERTY_STD_EX(QString, QStringView, MKVToolnixPath);
     public:
         explicit Model(
                 extract::Logger *logger,
@@ -19,7 +20,6 @@ namespace qmkv::model {
                 extract::ExtractFactory &extractFactory,
                 QObject *parent = nullptr);
 
-    Q_PROPERTY_STD_EX(QString, QStringView, MKVToolnixPath);
 
     private:
         extract::Logger *m_logger;
