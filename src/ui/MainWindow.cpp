@@ -11,9 +11,11 @@ MainWindow::~MainWindow() {
 MainWindow::MainWindow(qmkv::model::SettingsManager &settingsManager, qmkv::model::Model &model, QWidget *parent)
         : QMainWindow(parent),
           ui(new Ui::MainWindow),
-      m_settingsManager{settingsManager},
-      m_model{model} {
+          m_settingsManager{settingsManager},
+          m_model{model} {
     ui->setupUi(this);
+
+    setWindowTitle(QString("qMKVExtractGUI v%1 -- by alezhu").arg(QCoreApplication::applicationVersion()));
 
     connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, ui->txtMKVToolnixPath,
             [=](QStringView value) { ui->txtMKVToolnixPath->setText(value.toString()); });
