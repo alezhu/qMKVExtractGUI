@@ -15,6 +15,10 @@ int Application::start(int argc, char *argv[]) {
     qmkv::model::SettingsManager sm{logger};
     qmkv::extract::ExtractFactory extractFactory;
     qmkv::model::Model model{&logger, &helper, &sm, &qmkv::ui::showErrorMessage, extractFactory};
+    auto cmdArgs = app.arguments();
+    if (!cmdArgs.isEmpty()) {
+        model.parseCommandLineArguments(cmdArgs);
+    }
 
     MainWindow w{sm, model};
     w.show();

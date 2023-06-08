@@ -20,6 +20,9 @@ namespace qmkv::model {
                 extract::ExtractFactory &extractFactory,
                 QObject *parent = nullptr);
 
+        void parseCommandLineArguments(const QStringList &arguments);
+
+        QStringList &filesFromCommandLine();
 
     private:
         extract::Logger *m_logger;
@@ -28,6 +31,7 @@ namespace qmkv::model {
         extract::ExtractFactory &m_extractFactory;
         QScopedPointer<extract::Extract> m_extract;
         const std::function<void(QAnyStringView, QWidget *)> &m_showErrorMessage;
+        QStringList m_filesFromCommandLine;
 
         void _createExtract();
 

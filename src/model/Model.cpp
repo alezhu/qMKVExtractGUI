@@ -1,4 +1,6 @@
 #include <QFile>
+#include <QCommandLineParser>
+#include <QDir>
 #include "include\Model.h"
 #include "path.h"
 
@@ -65,6 +67,40 @@ namespace qmkv::model {
 
     void Model::_createExtract() {
         m_extract.reset(m_extractFactory.create(MKVToolnixPath()));
+    }
+
+    void Model::parseCommandLineArguments(const QStringList &arguments) {
+        auto args = arguments.join(',');
+        auto msg = QString(tr("Found command line arguments: %1")).arg(args);
+        m_logger->log(msg);
+
+        QCommandLineParser parser;
+        QString mkvtoolnixName("mkvtoolnix");
+        QCommandLineOption mkvtoolnixOption{mkvtoolnixName};
+        mkvtoolnixOption.setValueName(mkvtoolnixName);
+
+        parser.addOption(mkvtoolnixOption);
+        parser.process(arguments);
+
+        auto mkvtoolnixValue = parser.value(mkvtoolnixOption);
+        if (!mkvtoolnixValue.isEmpty()) {
+            m_logger->log(QString(tr("User provided a manual path for MKVToolNix: %1")).arg(mkvtoolnixValue));
+            QDir manualPath(mkvtoolnixValue);
+            if (!manualPath.exists()) {
+                m_logger->log(tr("The manual path for MKVToolNix does not exist!"));
+            } else {
+                auto result = _setMKVToolnixPath(mkvtoolnixValue, true, false, false);
+                if (!result) {
+                    m_logger->log(tr("Failed to set manual path!"));
+                }
+            }
+        }
+
+        m_filesFromCommandLine = parser.positionalArguments();
+    }
+
+    QStringList &Model::filesFromCommandLine() {
+        return m_filesFromCommandLine;
     }
 
 
