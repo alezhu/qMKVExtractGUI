@@ -79,10 +79,11 @@ namespace qmkv::model
         m_storage.setValue("MkvToolnixPath", value.toString());
     }
 
-    void SettingsManagerPrivate::onChapterTypeChanged(extract::ChapterTypes value)
-    {
-        m_storage.setValue("ChapterType", static_cast<int>(value));
-    }
+  void SettingsManagerPrivate::onChapterTypeChanged(extract::chapter_types::ChapterTypes value)
+  {
+    m_storage.setValue("ChapterType", static_cast<int>(value));
+  }
+
 
     void SettingsManagerPrivate::onLockedOutputDirectoryChanged(bool value)
     {

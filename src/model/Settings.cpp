@@ -15,9 +15,9 @@ namespace qmkv::model{
     emit MkvToolnixPathChanged(m_MkvToolnixPath);
   }
 
-  void Settings::setChapterType(qmkv::extract::ChapterTypes newChapterType)
+  void Settings::setChapterType(qmkv::extract::chapter_types::ChapterTypes newChapterType)
   {
-    if (m_ChapterType == newChapterType)
+    if(m_ChapterType == newChapterType)
       return;
     m_ChapterType = newChapterType;
     emit ChapterTypeChanged(m_ChapterType);
@@ -228,7 +228,8 @@ namespace qmkv::model{
     return m_MkvToolnixPath;
   }
 
-  qmkv::extract::ChapterTypes Settings::ChapterType() const
+
+  qmkv::extract::chapter_types::ChapterTypes Settings::ChapterType() const
   {
     return m_ChapterType;
   }

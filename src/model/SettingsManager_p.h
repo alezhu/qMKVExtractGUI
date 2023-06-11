@@ -29,7 +29,8 @@ namespace qmkv::model
   private slots:
     void onMkvToolnixPathChanged(QStringView value);
 
-    void onChapterTypeChanged(qmkv::extract::ChapterTypes value);
+
+    void onChapterTypeChanged(qmkv::extract::chapter_types::ChapterTypes value);
 
     void onLockedOutputDirectoryChanged(bool value);
 

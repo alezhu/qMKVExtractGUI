@@ -13,7 +13,6 @@ namespace qmkv::model
     Q_PROPERTY_STD_EX(QString, QStringView, OutputDirectory)
     Q_PROPERTY_STD_EX(QString, QStringView, DefaultOutputDirectory)
     Q_PROPERTY_STD_EX(QString,QStringView, MkvToolnixPath)
-    Q_PROPERTY_STD(qmkv::extract::ChapterTypes, ChapterType)
     Q_PROPERTY_STD(qmkv::ui::FormWindowState, WindowState)
     Q_PROPERTY_STD(bool, LockedOutputDirectory)
     Q_PROPERTY_STD(bool, JobMode)
@@ -29,6 +28,7 @@ namespace qmkv::model
     Q_PROPERTY_STD_RESET_EX(QString,QStringView, SubtitleTrackFilenamePattern)
     Q_PROPERTY_STD_RESET_EX(QString,QStringView, ChapterFilenamePattern)
     Q_PROPERTY_STD_RESET_EX(QString,QStringView, AttachmentFilenamePattern)
+  Q_PROPERTY_STD(qmkv::extract::chapter_types::ChapterTypes, ChapterType)
 
   public:
     explicit Settings(QObject *parent = nullptr);
