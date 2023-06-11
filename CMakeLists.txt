@@ -27,7 +27,7 @@ generate_product_version(ProductVersionFiles
 
 set(APP_PROJECT_SOURCES
         src/main.cpp
-        src/app.rc
+        #        src/app.rc
         src/app.qrc
 )
 
