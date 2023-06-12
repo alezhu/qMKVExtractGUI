@@ -46,6 +46,9 @@ MainWindow::MainWindow(
   connect(&m_model, &Model::TotalStatusProgressChanged, this, &MainWindow::model_TotalStatusProgress_changed);
 
   clearStatus();
+
+  // Set form size and position from settings
+  _restoreSizeAndPositionFromSettings();
 }
 
 void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
@@ -126,6 +129,53 @@ void MainWindow::model_TotalStatusProgress_changed(uint value)
   ui->prgBrTotalStatus->setValue(static_cast<int>(value));
   ui->prgBrTotalStatus->setVisible(value != 0);
 }
+
+constexpr QAnyStringView settings_MainWindow_geometry{"MainWindow/geometry"};
+constexpr QAnyStringView settings_MainWindow_state{"MainWindow/state"};
+
+void MainWindow::_restoreSizeAndPositionFromSettings()
+{
+  auto logger = &m_model.logger();
+  logger->log(tr("Begin setting form size and position from settings..."));
+  QSettings settings(this);
+  restoreGeometry(settings.value(settings_MainWindow_geometry).toByteArray());
+  restoreState(settings.value(settings_MainWindow_state).toByteArray());
+
+  logger->log(tr("Finished setting form size and position from settings!"));
+}
+
+void MainWindow::_saveSizeAndPositionToSettings()
+{
+  auto logger = &m_model.logger();
+  QSettings settings(this);
+  settings.setValue(settings_MainWindow_geometry, saveGeometry());
+  settings.setValue(settings_MainWindow_state, saveState());
+
+  logger->log(tr("Changing size and position"));
+}
+
+void MainWindow::changeEvent(QEvent *event)
+{
+  switch(event->type()) {
+    case QEvent::WindowStateChange:
+      _saveSizeAndPositionToSettings();
+      break;
+  }
+  QWidget::changeEvent(event);
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+  _saveSizeAndPositionToSettings();
+  QWidget::resizeEvent(event);
+}
+
+void MainWindow::moveEvent(QMoveEvent *event)
+{
+  _saveSizeAndPositionToSettings();
+  QWidget::moveEvent(event);
+}
+
 
 
 

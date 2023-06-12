@@ -29,6 +29,14 @@ public:
 
   ~MainWindow() override;
 
+protected:
+  virtual void changeEvent(QEvent *event) override;
+
+  virtual void resizeEvent(QResizeEvent *event) override;
+
+  virtual void moveEvent(QMoveEvent *event) override;
+
+
 private:
   Ui::MainWindow *ui{};
   Model &m_model;
@@ -50,6 +58,9 @@ private:
 
   void _fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex);
 
+  void _restoreSizeAndPositionFromSettings();
+
+  void _saveSizeAndPositionToSettings();
 
 private slots:
 
