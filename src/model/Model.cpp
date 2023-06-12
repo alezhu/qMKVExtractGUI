@@ -166,7 +166,7 @@ namespace qmkv::model {
   {
     if(m_TotalStatusText == value) return;
     m_TotalStatusText = value.toString();
-    emit StatusTextChanged(value);
+    emit TotalStatusTextChanged(value);
   }
 
   int Model::StatusProgress() const
@@ -190,7 +190,7 @@ namespace qmkv::model {
   {
     if(m_TotalStatusProgress == value) return;
     m_TotalStatusProgress = value;
-    emit StatusProgressChanged(m_TotalStatusProgress);
+    emit TotalStatusProgressChanged(m_TotalStatusProgress);
   }
 
 
