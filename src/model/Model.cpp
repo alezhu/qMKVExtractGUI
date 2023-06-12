@@ -17,9 +17,16 @@ namespace qmkv::model {
     m_logger{logger},
     m_helper{helper},
     m_settingsManager{settingsManager},
+    m_extract{nullptr},
     m_extractFactory{extractFactory},
     m_showErrorMessage{showErrorMessage},
-    m_Extracting{false}
+    m_Extracting{false},
+    m_MKVToolnixPath{},
+    m_filesFromCommandLine{},
+    m_StatusText{},
+    m_TotalStatusText{},
+    m_StatusProgress{0},
+    m_TotalStatusProgress{0}
   {
 
     auto settings = m_settingsManager->get();
