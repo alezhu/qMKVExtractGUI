@@ -58,6 +58,7 @@ private slots:
 
   void model_Extracting_changed(const bool value);
 
+  void clearStatus();
 
   void model_StatusText_changed(QAnyStringView value);
 

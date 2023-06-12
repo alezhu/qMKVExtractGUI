@@ -40,6 +40,8 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
 
   model_TotalStatusProgress_changed(m_model.TotalStatusProgress());
   connect(&m_model, &Model::TotalStatusProgressChanged, this, &MainWindow::model_TotalStatusProgress_changed);
+  
+  clearStatus();
 }
 
 void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
@@ -93,6 +95,10 @@ void MainWindow::cmbChapterType_currentIndexChanged(int index)
   m_model.setChapterType(static_cast<qmkv::extract::chapter_types::ChapterTypes>(value));
 }
 
+void MainWindow::clearStatus()
+{
+  m_model.clearStatus();
+}
 
 void MainWindow::model_StatusText_changed(QAnyStringView value)
 {
