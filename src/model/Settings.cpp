@@ -7,7 +7,7 @@ namespace qmkv::model{
 
   }
 
-  void Settings::setMkvToolnixPath(QStringView newMkvToolnixPath)
+  void Settings::setMkvToolnixPath(const QAnyStringView newMkvToolnixPath)
   {
     if(m_MkvToolnixPath == newMkvToolnixPath)
       return;
@@ -228,7 +228,7 @@ namespace qmkv::model{
     setAttachmentFilenamePattern(_AttachmentFilenamePattern.toString());
   }
 
-  QStringView Settings::MkvToolnixPath() const
+  QAnyStringView Settings::MkvToolnixPath() const
   {
     return m_MkvToolnixPath;
   }

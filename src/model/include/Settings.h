@@ -12,7 +12,6 @@ namespace qmkv::model
     Q_OBJECT
     Q_PROPERTY_STD_EX(QString, QStringView, OutputDirectory)
     Q_PROPERTY_STD_EX(QString, QStringView, DefaultOutputDirectory)
-    Q_PROPERTY_STD_EX(QString,QStringView, MkvToolnixPath)
     Q_PROPERTY_STD(qmkv::ui::FormWindowState, WindowState)
     Q_PROPERTY_STD(bool, LockedOutputDirectory)
     Q_PROPERTY_STD(bool, JobMode)
@@ -22,6 +21,8 @@ namespace qmkv::model
     Q_PROPERTY_STD(int32_t, WindowPosY)
     Q_PROPERTY_STD(int32_t, WindowSizeWidth)
     Q_PROPERTY_STD(int32_t, WindowSizeHeight)
+
+  Q_PROPERTY_STD_EX(QString, QAnyStringView, MkvToolnixPath)
 
     Q_PROPERTY_STD_RESET_EX(QString,QStringView, VideoTrackFilenamePattern)
     Q_PROPERTY_STD_RESET_EX(QString,QStringView, AudioTrackFilenamePattern)
