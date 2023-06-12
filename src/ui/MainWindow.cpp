@@ -75,3 +75,12 @@ void MainWindow::_fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox 
   comboBox->setCurrentIndex(setCurrentIndex);
 }
 
+void MainWindow::cmbChapterType_currentIndexChanged(int index)
+{
+  auto metaEnum = QMetaEnum::fromType<qmkv::extract::chapter_types::ChapterTypes>();
+  auto value = metaEnum.value(index);
+  m_model.setChapterType(static_cast<qmkv::extract::chapter_types::ChapterTypes>(value));
+}
+
+
+
