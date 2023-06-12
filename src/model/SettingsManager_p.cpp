@@ -68,10 +68,10 @@ namespace qmkv::model {
       }
     }
 
-    void SettingsManagerPrivate::onMkvToolnixPathChanged(QStringView value)
     m_logger.log(tr("Finished loading settings!"));
   }
 
+  void SettingsManagerPrivate::onMkvToolnixPathChanged(QAnyStringView value)
   {
     m_storage.setValue("MkvToolnixPath", value.toString());
   }

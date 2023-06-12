@@ -29,8 +29,8 @@ namespace qmkv::model {
     void _connect();
 
   private slots:
-    void onMkvToolnixPathChanged(QStringView value);
 
+    void onMkvToolnixPathChanged(QAnyStringView value);
 
     void onChapterTypeChanged(qmkv::extract::chapter_types::ChapterTypes value);
 
