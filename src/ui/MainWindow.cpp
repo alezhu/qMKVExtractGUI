@@ -43,6 +43,10 @@ MainWindow::MainWindow(qmkv::model::Model &model, QWidget *parent) :
 
   model_MKVToolnixPath_changed(m_model.MKVToolnixPath());
   connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, this, &MainWindow::model_MKVToolnixPath_changed);
+
+  model_Extracting_changed(false);
+  connect(&m_model, &qmkv::model::Model::ExtractingChanged, this, &MainWindow::model_Extracting_changed);
+
   _fillComboboxFromEnum<qmkv::extract::chapter_types::ChapterTypes>(ui->cmbChapterType, m_model.ChapterType());
 
   _fillComboboxFromEnum<qmkv::extract::extraction_mode::ExtractionMode>(ui->cmbExtractionMode, qmkv::extract::extraction_mode::ExtractionMode::Tracks);
@@ -54,6 +58,14 @@ void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
 {
   ui->txtMKVToolnixPath->setText(value.toString());
 }
+
+void MainWindow::model_Extracting_changed(const bool value)
+{
+  ui->btnAbort->setEnabled(value);
+  ui->btnAbortAll->setEnabled(value);
+  ui->btnOptions->setEnabled(!value);
+}
+
 void MainWindow::_fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex = -1)
 {
   comboBox->clear();

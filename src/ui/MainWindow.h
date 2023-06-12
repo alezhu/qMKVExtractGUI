@@ -45,4 +45,6 @@ private:
   void model_MKVToolnixPath_changed(QAnyStringView value);
 
     void btnBrowseMKVToolnixPath_clicked();
+  void model_Extracting_changed(const bool value);
+
 };
