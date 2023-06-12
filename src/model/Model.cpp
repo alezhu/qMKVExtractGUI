@@ -107,6 +107,17 @@ namespace qmkv::model {
     }
 
 
+  bool Model::Extracting() const
+  {
+    return m_Extracting;
+  }
+
+  void Model::setExtracting(const bool value)
+  {
+    if(m_Extracting == value) return;
+    m_Extracting = value;
+    emit ExtractingChanged(m_Extracting);
+  }
 
   extract::chapter_types::ChapterTypes Model::ChapterType() const
   {
