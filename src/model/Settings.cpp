@@ -1,8 +1,26 @@
 #include "Settings.h"
 
-namespace qmkv::model{
-  Settings::Settings(QObject *parent)
-      : QObject{parent}
+namespace qmkv::model {
+  Settings::Settings(QObject *parent) :
+    QObject{parent},
+    m_ChapterType{},
+    m_AttachmentFilenamePattern{},
+    m_AudioTrackFilenamePattern{},
+    m_ChapterFilenamePattern{},
+    m_DefaultOutputDirectory{},
+    m_MkvToolnixPath{},
+    m_OutputDirectory{},
+    m_SubtitleTrackFilenamePattern{},
+    m_VideoTrackFilenamePattern{},
+    m_JobMode{},
+    m_LockedOutputDirectory{},
+    m_ShowPopup{},
+    m_ShowPopupInJobManager{},
+    m_WindowPosX{},
+    m_WindowPosY{},
+    m_WindowSizeHeight{},
+    m_WindowSizeWidth{},
+    m_WindowState{}
   {
 
   }
