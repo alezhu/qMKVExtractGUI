@@ -143,6 +143,8 @@ namespace qmkv::model {
 
     emit ChapterTypeChanged(value);
   }
+
+
   QAnyStringView Model::StatusText() const
   {
     return m_StatusText;
@@ -189,5 +191,14 @@ namespace qmkv::model {
     if(m_TotalStatusProgress == value) return;
     m_TotalStatusProgress = value;
     emit StatusProgressChanged(m_TotalStatusProgress);
+  }
+
+
+  void Model::clearStatus()
+  {
+    setStatusText(emptyText);
+    setTotalStatusText(emptyText);
+    setStatusProgress(0);
+    setTotalStatusProgress(0);
   }
 }

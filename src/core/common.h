@@ -1,6 +1,9 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
+#include <QAnyStringView>
+
+
 #define Q_PROPERTY_STD_COMMON(type, exttype, name) \
   private: mutable type m_##name;\
   public: exttype name() const; \
@@ -34,4 +37,6 @@ namespace qmkv::ui {
     Maximized
   };
 }
+
+constexpr QAnyStringView emptyText{""};
 #endif // __COMMON_H__
