@@ -208,4 +208,9 @@ namespace qmkv::model {
     setStatusProgress(0);
     setTotalStatusProgress(0);
   }
+
+  extract::Logger &Model::logger() const
+  {
+    return *m_logger;
+  }
 }

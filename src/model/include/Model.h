@@ -31,6 +31,8 @@ namespace qmkv::model {
 
     QStringList &filesFromCommandLine();
 
+    extract::Logger &logger() const;
+
   public slots:
 
     void clearStatus();
