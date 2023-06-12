@@ -20,6 +20,8 @@ add_library(${PROJECT_NAME} STATIC
         ExtractFactory.cpp
         include/ExtractFactory.h
         include/ChapterTypes.h
+        include/ExtractionMode.h
+
 )
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core core)
