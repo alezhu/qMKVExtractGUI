@@ -4,23 +4,28 @@
 #include <QObject>
 
 namespace qmkv::extract {
-    class Logger : public QObject
-    {
-        Q_OBJECT
-    public:
-        explicit Logger(QObject* parent = nullptr);
+  class Logger : public QObject {
+  Q_OBJECT
 
-        QString LogText() const;
-        static Logger* getInstance();
-    public slots:
-        void clear();
-        void log(QStringView message);
+  public:
+    explicit Logger(QObject *parent = nullptr);
 
-    signals:
-        void lineAdded(QStringView  line, QDateTime dt);
+    QString LogText() const;
 
-    protected:
-        QStringList m_log;
-  static Logger * m_instance;
-    };
+    static Logger *getInstance();
+
+  public slots:
+
+    void clear();
+
+    void log(QStringView message);
+
+  signals:
+
+    void lineAdded(QStringView line, QDateTime dt);
+
+  protected:
+    QStringList m_log;
+    static Logger *m_instance;
+  };
 } // namespace qmkv::extract

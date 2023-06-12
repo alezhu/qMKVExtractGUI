@@ -6,7 +6,8 @@
 #include "ExtractFactory.h"
 
 namespace qmkv::extract {
-    Extract *ExtractFactory::create(QAnyStringView path) {
-        return new Extract(path);
-    }
+  Extract *ExtractFactory::create(QAnyStringView path)
+  {
+    return new Extract(path);
+  }
 }

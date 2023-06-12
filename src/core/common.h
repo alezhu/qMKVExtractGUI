@@ -21,20 +21,17 @@
 #define Q_PROPERTY_STD_RESET(type, name) Q_PROPERTY_STD_RESET_EX(type, type, name)
 
 namespace qmkv::ui {
-    enum class FormWindowState
-    {
-        //
-        // Summary:
-        //     A default sized window.
-        Normal,
-        //
-        // Summary:
-        //     A minimized window.
-        Minimized,
-        //
-        // Summary:
-        //     A maximized window.
-        Maximized
+  enum class FormWindowState {
+    //
+    // Summary:
+    //     A default sized window.
+    Normal, //
+    // Summary:
+    //     A minimized window.
+    Minimized, //
+    // Summary:
+    //     A maximized window.
+    Maximized
   };
 }
 #endif // __COMMON_H__

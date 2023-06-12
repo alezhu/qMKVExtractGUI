@@ -7,8 +7,8 @@
 #include "Extract.h"
 
 namespace qmkv::extract {
-    class ExtractFactory {
-    public:
-        Extract *create(QAnyStringView path);
-    };
+  class ExtractFactory {
+  public:
+    Extract *create(QAnyStringView path);
+  };
 }

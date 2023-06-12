@@ -1,18 +1,19 @@
 #pragma once
+
 #include "SettingsManager_p.h"
 #include "Settings.h"
 #include "SettingsFilter.h"
 #include <Logger.h>
 #include <QSettings>
 
-namespace qmkv::model
-{
+namespace qmkv::model {
 
-  class SettingsManagerPrivate : public QObject
-  {
-    Q_OBJECT
+  class SettingsManagerPrivate : public QObject {
+  Q_OBJECT
+
   public:
-    explicit SettingsManagerPrivate(extract::Logger& logger, QObject *parent = nullptr);
+    explicit SettingsManagerPrivate(extract::Logger &logger, QObject *parent = nullptr);
+
     virtual ~SettingsManagerPrivate() = default;
 
     Settings *get();
@@ -21,9 +22,10 @@ namespace qmkv::model
     Settings m_Settings;
     QSettings m_storage;
     SettingsFilter m_filter;
-    extract::Logger& m_logger;
+    extract::Logger &m_logger;
 
     void _load();
+
     void _connect();
 
   private slots:

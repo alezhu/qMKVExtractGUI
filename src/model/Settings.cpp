@@ -9,7 +9,7 @@ namespace qmkv::model{
 
   void Settings::setMkvToolnixPath(QStringView newMkvToolnixPath)
   {
-    if (m_MkvToolnixPath == newMkvToolnixPath)
+    if(m_MkvToolnixPath == newMkvToolnixPath)
       return;
     m_MkvToolnixPath = newMkvToolnixPath.toString();
     emit MkvToolnixPathChanged(m_MkvToolnixPath);
@@ -25,7 +25,7 @@ namespace qmkv::model{
 
   void Settings::setLockedOutputDirectory(bool newLockedOutputDirectory)
   {
-    if (m_LockedOutputDirectory == newLockedOutputDirectory)
+    if(m_LockedOutputDirectory == newLockedOutputDirectory)
       return;
     m_LockedOutputDirectory = newLockedOutputDirectory;
     emit LockedOutputDirectoryChanged(m_LockedOutputDirectory);
@@ -33,7 +33,7 @@ namespace qmkv::model{
 
   void Settings::setDefaultOutputDirectory(QStringView newDefaultOutputDirectory)
   {
-    if (m_DefaultOutputDirectory == newDefaultOutputDirectory)
+    if(m_DefaultOutputDirectory == newDefaultOutputDirectory)
       return;
     m_DefaultOutputDirectory = newDefaultOutputDirectory.toString();
     emit DefaultOutputDirectoryChanged(m_DefaultOutputDirectory);
@@ -41,7 +41,7 @@ namespace qmkv::model{
 
   void Settings::setOutputDirectory(QStringView newOutputDirectory)
   {
-    if (m_OutputDirectory == newOutputDirectory)
+    if(m_OutputDirectory == newOutputDirectory)
       return;
     m_OutputDirectory = newOutputDirectory.toString();
     emit OutputDirectoryChanged(m_OutputDirectory);
@@ -49,7 +49,7 @@ namespace qmkv::model{
 
   void Settings::setWindowPosX(int32_t newWindowPosX)
   {
-    if (m_WindowPosX == newWindowPosX)
+    if(m_WindowPosX == newWindowPosX)
       return;
     m_WindowPosX = newWindowPosX;
     emit WindowPosXChanged(m_WindowPosX);
@@ -57,7 +57,7 @@ namespace qmkv::model{
 
   void Settings::setWindowPosY(int32_t newWindowPosY)
   {
-    if (m_WindowPosY == newWindowPosY)
+    if(m_WindowPosY == newWindowPosY)
       return;
     m_WindowPosY = newWindowPosY;
     emit WindowPosYChanged(m_WindowPosY);
@@ -65,7 +65,7 @@ namespace qmkv::model{
 
   void Settings::setWindowSizeWidth(int32_t newWindowSizeWidth)
   {
-    if (m_WindowSizeWidth == newWindowSizeWidth)
+    if(m_WindowSizeWidth == newWindowSizeWidth)
       return;
     m_WindowSizeWidth = newWindowSizeWidth;
     emit WindowSizeWidthChanged(m_WindowSizeWidth);
@@ -73,7 +73,7 @@ namespace qmkv::model{
 
   void Settings::setWindowSizeHeight(int32_t newWindowSizeHeight)
   {
-    if (m_WindowSizeHeight == newWindowSizeHeight)
+    if(m_WindowSizeHeight == newWindowSizeHeight)
       return;
     m_WindowSizeHeight = newWindowSizeHeight;
     emit WindowSizeHeightChanged(m_WindowSizeHeight);
@@ -81,7 +81,7 @@ namespace qmkv::model{
 
   void Settings::setJobMode(bool newJobMode)
   {
-    if (m_JobMode == newJobMode)
+    if(m_JobMode == newJobMode)
       return;
     m_JobMode = newJobMode;
     emit JobModeChanged(m_JobMode);
@@ -89,7 +89,7 @@ namespace qmkv::model{
 
   void Settings::setWindowState(const qmkv::ui::FormWindowState newWindowState)
   {
-    if (m_WindowState == newWindowState)
+    if(m_WindowState == newWindowState)
       return;
     m_WindowState = newWindowState;
     emit WindowStateChanged(m_WindowState);
@@ -97,7 +97,7 @@ namespace qmkv::model{
 
   void Settings::setShowPopup(bool newShowPopup)
   {
-    if (m_ShowPopup == newShowPopup)
+    if(m_ShowPopup == newShowPopup)
       return;
     m_ShowPopup = newShowPopup;
     emit ShowPopupChanged(m_ShowPopup);
@@ -105,7 +105,7 @@ namespace qmkv::model{
 
   void Settings::setShowPopupInJobManager(bool newShowPopupInJobManager)
   {
-    if (m_ShowPopupInJobManager == newShowPopupInJobManager)
+    if(m_ShowPopupInJobManager == newShowPopupInJobManager)
       return;
     m_ShowPopupInJobManager = newShowPopupInJobManager;
     emit ShowPopupInJobManagerChanged(m_ShowPopupInJobManager);
@@ -113,14 +113,15 @@ namespace qmkv::model{
 
   void Settings::setVideoTrackFilenamePattern(QStringView newVideoTrackFilenamePattern)
   {
-    if (m_VideoTrackFilenamePattern == newVideoTrackFilenamePattern)
+    if(m_VideoTrackFilenamePattern == newVideoTrackFilenamePattern)
       return;
     m_VideoTrackFilenamePattern = newVideoTrackFilenamePattern.toString();
     emit VideoTrackFilenamePatternChanged(m_VideoTrackFilenamePattern);
   }
 
   constexpr auto _CommonTrackFilenamePattern{"{FilenameNoExt}_track{TrackNumber}_[{Language}]"};
-  constexpr QLatin1StringView  _VideoTrackFilenamePattern{_CommonTrackFilenamePattern};
+  constexpr QLatin1StringView _VideoTrackFilenamePattern{_CommonTrackFilenamePattern};
+
   void Settings::resetVideoTrackFilenamePattern()
   {
     setVideoTrackFilenamePattern(_VideoTrackFilenamePattern.toString());
@@ -134,7 +135,8 @@ namespace qmkv::model{
     return m_VideoTrackFilenamePattern;
   }
 
-    constexpr QLatin1StringView  _AudioTrackFilenamePattern{"{FilenameNoExt}_track{TrackNumber}_[{Language}]_DELAY {EffectiveDelay}ms"};
+  constexpr QLatin1StringView _AudioTrackFilenamePattern{"{FilenameNoExt}_track{TrackNumber}_[{Language}]_DELAY {EffectiveDelay}ms"};
+
   QStringView Settings::AudioTrackFilenamePattern() const
   {
     if(m_AudioTrackFilenamePattern.isNull()) {
@@ -145,7 +147,7 @@ namespace qmkv::model{
 
   void Settings::setAudioTrackFilenamePattern(QStringView newAudioTrackFilenamePattern)
   {
-    if (m_AudioTrackFilenamePattern == newAudioTrackFilenamePattern)
+    if(m_AudioTrackFilenamePattern == newAudioTrackFilenamePattern)
       return;
     m_AudioTrackFilenamePattern = newAudioTrackFilenamePattern.toString();
     emit AudioTrackFilenamePatternChanged(m_AudioTrackFilenamePattern);
@@ -156,7 +158,8 @@ namespace qmkv::model{
     setAudioTrackFilenamePattern(_AudioTrackFilenamePattern.toString());
   }
 
-  constexpr QLatin1StringView  _SubtitleTrackFilenamePattern{_CommonTrackFilenamePattern};
+  constexpr QLatin1StringView _SubtitleTrackFilenamePattern{_CommonTrackFilenamePattern};
+
   QStringView Settings::SubtitleTrackFilenamePattern() const
   {
     if(m_SubtitleTrackFilenamePattern.isNull()) {
@@ -167,7 +170,7 @@ namespace qmkv::model{
 
   void Settings::setSubtitleTrackFilenamePattern(QStringView newSubtitleTrackFilenamePattern)
   {
-    if (m_SubtitleTrackFilenamePattern == newSubtitleTrackFilenamePattern)
+    if(m_SubtitleTrackFilenamePattern == newSubtitleTrackFilenamePattern)
       return;
     m_SubtitleTrackFilenamePattern = newSubtitleTrackFilenamePattern.toString();
     emit SubtitleTrackFilenamePatternChanged(m_SubtitleTrackFilenamePattern);
@@ -178,7 +181,8 @@ namespace qmkv::model{
     setSubtitleTrackFilenamePattern(_SubtitleTrackFilenamePattern.toString());
   }
 
-  constexpr QLatin1StringView  _ChapterFilenamePattern{"{FilenameNoExt}_chapters"};
+  constexpr QLatin1StringView _ChapterFilenamePattern{"{FilenameNoExt}_chapters"};
+
   QStringView Settings::ChapterFilenamePattern() const
   {
     if(m_ChapterFilenamePattern.isNull()) {
@@ -189,7 +193,7 @@ namespace qmkv::model{
 
   void Settings::setChapterFilenamePattern(QStringView newChapterFilenamePattern)
   {
-    if (m_ChapterFilenamePattern == newChapterFilenamePattern)
+    if(m_ChapterFilenamePattern == newChapterFilenamePattern)
       return;
     m_ChapterFilenamePattern = newChapterFilenamePattern.toString();
     emit ChapterFilenamePatternChanged(m_ChapterFilenamePattern);
@@ -201,7 +205,8 @@ namespace qmkv::model{
   }
 
 
-  constexpr QLatin1StringView  _AttachmentFilenamePattern{"{AttachmentFilename}"};
+  constexpr QLatin1StringView _AttachmentFilenamePattern{"{AttachmentFilename}"};
+
   QStringView Settings::AttachmentFilenamePattern() const
   {
     if(m_AttachmentFilenamePattern.isNull()) {
@@ -212,7 +217,7 @@ namespace qmkv::model{
 
   void Settings::setAttachmentFilenamePattern(QStringView newAttachmentFilenamePattern)
   {
-    if (m_AttachmentFilenamePattern == newAttachmentFilenamePattern)
+    if(m_AttachmentFilenamePattern == newAttachmentFilenamePattern)
       return;
     m_AttachmentFilenamePattern = newAttachmentFilenamePattern.toString();
     emit AttachmentFilenamePatternChanged(m_AttachmentFilenamePattern);

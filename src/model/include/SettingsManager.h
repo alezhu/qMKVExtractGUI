@@ -1,16 +1,17 @@
 #pragma once
+
 #include "Settings.h"
 #include <Logger.h>
 #include <QSettings>
 #include <QSharedPointer>
 
-namespace qmkv::model
-{
+namespace qmkv::model {
 
   class SettingsManagerPrivate;
-  class SettingsManager : public QObject
-  {
-    Q_OBJECT
+
+  class SettingsManager : public QObject {
+  Q_OBJECT
+
   public:
     explicit SettingsManager(extract::Logger &logger, QObject *parent = nullptr);
 
@@ -18,6 +19,7 @@ namespace qmkv::model
 
   private:
     QSharedPointer<SettingsManagerPrivate> d_ptr;
+
     Q_DECLARE_PRIVATE(SettingsManager);
   };
 }

@@ -1,8 +1,7 @@
 #pragma once
 
-class Application
-{
+class Application {
 public:
-	static int start(int argc, char* argv[]);
+  static int start(int argc, char *argv[]);
 };
 

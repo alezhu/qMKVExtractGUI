@@ -5,22 +5,25 @@
 #include "MainWindow.h"
 #include "utils.h"
 
-int Application::start(int argc, char *argv[]) {
-    QCoreApplication::setOrganizationName("Alezhu");
-    QCoreApplication::setApplicationName("qMKVExtractGUI");
+int Application::start(int argc, char *argv[])
+{
 
-    qmkv::extract::Logger logger;
-    qmkv::extract::Helper helper;
-    QApplication app(argc, argv);
-    qmkv::model::SettingsManager sm{logger};
-    qmkv::extract::ExtractFactory extractFactory;
-    qmkv::model::Model model{&logger, &helper, &sm, &qmkv::ui::showErrorMessage, extractFactory};
-    auto cmdArgs = app.arguments();
-    if (!cmdArgs.isEmpty()) {
-        model.parseCommandLineArguments(cmdArgs);
-    }
+  QCoreApplication::setOrganizationName("Alezhu");
+  QCoreApplication::setApplicationName("qMKVExtractGUI");
 
     MainWindow w{sm, model};
-    w.show();
-    return app.exec();
+  qmkv::extract::Logger logger;
+  qmkv::extract::Helper helper;
+  QApplication app(argc, argv);
+
+
+  qmkv::model::SettingsManager sm{logger};
+  qmkv::extract::ExtractFactory extractFactory;
+  qmkv::model::Model model{&logger, &helper, &sm, &qmkv::ui::showErrorMessage, extractFactory};
+  auto cmdArgs = app.arguments();
+  if(!cmdArgs.isEmpty()) {
+    model.parseCommandLineArguments(cmdArgs);
+  }
+  w.show();
+  return app.exec();
 }

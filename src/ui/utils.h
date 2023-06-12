@@ -7,6 +7,6 @@
 #include <QAnyStringView>
 
 namespace qmkv::ui {
-    void showErrorMessage(QAnyStringView msg, QWidget *parent = nullptr);
+  void showErrorMessage(QAnyStringView msg, QWidget *parent = nullptr);
 }
 

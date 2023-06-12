@@ -9,15 +9,15 @@
 
 namespace qmkv::extract {
 
-    class Extract {
-    public:
-        static QLatin1StringView MKV_EXTRACT_FILENAME();
+  class Extract {
+  public:
+    static QLatin1StringView MKV_EXTRACT_FILENAME();
 
-        explicit Extract(QAnyStringView mkvToonlixPath);
+    explicit Extract(QAnyStringView mkvToonlixPath);
 
-    private:
-        QString m_mkvToonlixPath;
-        QString m_MKVExtractFilename;
-    };
+  private:
+    QString m_mkvToonlixPath;
+    QString m_MKVExtractFilename;
+  };
 
 } // qmkv::extract
