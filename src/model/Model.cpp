@@ -166,4 +166,28 @@ namespace qmkv::model {
     m_TotalStatusText = value.toString();
     emit StatusTextChanged(value);
   }
+
+  uint Model::StatusProgress() const
+  {
+    return m_StatusProgress;
+  }
+
+  void Model::setStatusProgress(const uint value)
+  {
+    if(m_StatusProgress == value) return;
+    m_StatusProgress = value;
+    emit StatusProgressChanged(m_StatusProgress);
+  }
+
+  uint Model::TotalStatusProgress() const
+  {
+    return m_TotalStatusProgress;
+  }
+
+  void Model::setTotalStatusProgress(const uint value)
+  {
+    if(m_TotalStatusProgress == value) return;
+    m_TotalStatusProgress = value;
+    emit StatusProgressChanged(m_TotalStatusProgress);
+  }
 }
