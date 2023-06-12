@@ -7,6 +7,12 @@
 
 int Application::start(int argc, char *argv[])
 {
+  QMetaType::registerConverter<QString, QAnyStringView>([=](const QString &value) {
+    return QAnyStringView(value);
+  });
+  QMetaType::registerConverter<QString, QStringView>([=](const QString &value) {
+    return QStringView(value);
+  });
 
   QCoreApplication::setOrganizationName("Alezhu");
   QCoreApplication::setApplicationName("qMKVExtractGUI");
