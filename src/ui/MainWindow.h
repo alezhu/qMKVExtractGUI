@@ -68,7 +68,6 @@ private slots:
 
   void cmbChapterType_currentIndexChanged(int index);
 
-
   void model_MKVToolnixPath_changed(QAnyStringView value);
 
   void model_Extracting_changed(const bool value);
@@ -82,4 +81,6 @@ private slots:
   void model_TotalStatusText_changed(QAnyStringView value);
 
   void model_TotalStatusProgress_changed(uint value);
+
+
 };

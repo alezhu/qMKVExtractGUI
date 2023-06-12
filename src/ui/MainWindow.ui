@@ -172,7 +172,7 @@
         <widget class="QLineEdit" name="lineEdit_2"/>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="chkUseSourceDirectory">
          <property name="text">
           <string>Use Source</string>
          </property>
@@ -405,5 +405,6 @@
  <slots>
   <slot>btnBrowseMKVToolnixPath_clicked()</slot>
   <slot>cmbChapterType_currentIndexChanged(int)</slot>
+  <slot>chkUseSourceDirectory_toggled(bool)</slot>
  </slots>
 </ui>

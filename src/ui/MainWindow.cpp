@@ -46,9 +46,13 @@ MainWindow::MainWindow(
   connect(&m_model, &Model::TotalStatusProgressChanged, this, &MainWindow::model_TotalStatusProgress_changed);
 
   clearStatus();
-
   // Set form size and position from settings
   _restoreSizeAndPositionFromSettings();
+
+  ui->chkUseSourceDirectory->setChecked(m_model.UseSourceDirectory());
+  connect(&m_model, &Model::UseSourceDirectoryChanged, ui->chkUseSourceDirectory, &QCheckBox::setChecked);
+  connect(ui->chkUseSourceDirectory, &QCheckBox::toggled, &m_model, &Model::setUseSourceDirectory);
+
 }
 
 void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
@@ -175,6 +179,7 @@ void MainWindow::moveEvent(QMoveEvent *event)
   _saveSizeAndPositionToSettings();
   QWidget::moveEvent(event);
 }
+
 
 
 

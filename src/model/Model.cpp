@@ -36,6 +36,10 @@ namespace qmkv::model {
     }
 
     m_ChapterType = settings->ChapterType();
+    connect(settings, &Settings::ChapterTypeChanged, this, &Model::setChapterType);
+
+    m_UseSourceDirectory = settings->LockedOutputDirectory();
+    connect(settings, &Settings::LockedOutputDirectoryChanged, this, &Model::setUseSourceDirectory);
 
     _createExtract();
     connect(this, &Model::MKVToolnixPathChanged, this, &Model::_createExtract);
@@ -213,4 +217,19 @@ namespace qmkv::model {
   {
     return *m_logger;
   }
+
+  bool Model::UseSourceDirectory() const
+  {
+    return m_UseSourceDirectory;
+  }
+
+  void Model::setUseSourceDirectory(const bool value)
+  {
+    if(m_UseSourceDirectory == value) return;
+    m_UseSourceDirectory = value;
+    m_settingsManager->get()->setLockedOutputDirectory(value);
+
+    emit UseSourceDirectoryChanged(m_UseSourceDirectory);
+  }
+
 }

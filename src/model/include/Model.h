@@ -16,6 +16,7 @@ namespace qmkv::model {
   Q_PROPERTY_STD(int, StatusProgress);
   Q_PROPERTY_STD(int, TotalStatusProgress);
   Q_PROPERTY_STD(bool, Extracting);
+  Q_PROPERTY_STD(bool, UseSourceDirectory);
   Q_PROPERTY_STD(extract::chapter_types::ChapterTypes, ChapterType);
   public:
     explicit Model(
