@@ -18,7 +18,7 @@ public:
     qmkv::model::Model &model, QWidget *parent = nullptr
   );
 
-    ~MainWindow() override;
+  ~MainWindow() override;
 
 private:
   Ui::MainWindow *ui{};
@@ -41,13 +41,15 @@ private:
   void _fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex);
 
 
+private slots:
+
+  void btnBrowseMKVToolnixPath_clicked();
 
   void cmbChapterType_currentIndexChanged(int index);
 
 
   void model_MKVToolnixPath_changed(QAnyStringView value);
 
-    void btnBrowseMKVToolnixPath_clicked();
   void model_Extracting_changed(const bool value);
 
 };

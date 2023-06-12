@@ -1,34 +1,13 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
+#include "ExtractionMode.h"
 #include <QMessageBox>
 #include <QFileDialog>
 
 
-MainWindow::~MainWindow() {
-    delete ui;
-}
-
-
-void MainWindow::btnBrowseMKVToolnixPath_clicked() {
-    auto path = m_model.MKVToolnixPath().toString();
-    if (!path.isEmpty()) {
-        if (QMessageBox::Yes !=
-            QMessageBox::question(this, tr("Are you sure?"), tr("Do you really want to change MKVToolnix path?"))) {
-            return;
-        }
-    }
-    QFileDialog ofd(this, tr("Select MKVToolnix directory..."));
-    if (QDir(path).exists()) {
-        ofd.setDirectory(path);
-    }
-    ofd.setFileMode(QFileDialog::Directory);
-    ofd.setOptions(QFileDialog::ShowDirsOnly);
-    if (ofd.exec()) {
-        auto files = ofd.selectedFiles();
-        if (!files.isEmpty()) {
-            m_model.setMKVToolnixPath(files.first());
-        }
-    }
+MainWindow::~MainWindow()
+{
+  delete ui;
 }
 
 
@@ -64,6 +43,29 @@ void MainWindow::model_Extracting_changed(const bool value)
   ui->btnAbort->setEnabled(value);
   ui->btnAbortAll->setEnabled(value);
   ui->btnOptions->setEnabled(!value);
+}
+
+
+void MainWindow::btnBrowseMKVToolnixPath_clicked()
+{
+  auto path = m_model.MKVToolnixPath().toString();
+  if(!path.isEmpty()) {
+    if(QMessageBox::Yes != QMessageBox::question(this, tr("Are you sure?"), tr("Do you really want to change MKVToolnix path?"))) {
+      return;
+    }
+  }
+  QFileDialog ofd(this, tr("Select MKVToolnix directory..."));
+  if(QDir(path).exists()) {
+    ofd.setDirectory(path);
+  }
+  ofd.setFileMode(QFileDialog::Directory);
+  ofd.setOptions(QFileDialog::ShowDirsOnly);
+  if(ofd.exec()) {
+    auto files = ofd.selectedFiles();
+    if(!files.isEmpty()) {
+      m_model.setMKVToolnixPath(QStringView(files.first()));
+    }
+  }
 }
 
 void MainWindow::_fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex = -1)
