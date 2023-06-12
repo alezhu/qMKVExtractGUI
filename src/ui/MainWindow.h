@@ -5,6 +5,12 @@
 #include <SettingsManager.h>
 #include <QComboBox>
 #include <QMetaEnum>
+#include "ExtractionMode.h"
+
+using qmkv::extract::chapter_types::ChapterTypes;
+using qmkv::extract::extraction_mode::ExtractionMode;
+using qmkv::model::Model;
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,15 +20,15 @@ class MainWindow : public QMainWindow {
 Q_OBJECT
 
 public:
-  MainWindow(
-    qmkv::model::Model &model, QWidget *parent = nullptr
+  explicit MainWindow(
+    Model &model, QWidget *parent = nullptr
   );
 
   ~MainWindow() override;
 
 private:
   Ui::MainWindow *ui{};
-  qmkv::model::Model &m_model;
+  Model &m_model;
 
   template<typename T>
   void _fillComboboxFromEnum(QComboBox *comboBox, T setCurrent)

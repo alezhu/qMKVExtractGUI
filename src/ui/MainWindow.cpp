@@ -4,14 +4,13 @@
 #include <QMessageBox>
 #include <QFileDialog>
 
-
 MainWindow::~MainWindow()
 {
   delete ui;
 }
 
-
-MainWindow::MainWindow(qmkv::model::Model &model, QWidget *parent) :
+MainWindow::MainWindow(Model &model, QWidget *parent)
+  :
   QMainWindow(parent),
   ui(new Ui::MainWindow),
   m_model{model}
@@ -21,14 +20,14 @@ MainWindow::MainWindow(qmkv::model::Model &model, QWidget *parent) :
   setWindowTitle(QString("qMKVExtractGUI v%1 -- by alezhu").arg(QCoreApplication::applicationVersion()));
 
   model_MKVToolnixPath_changed(m_model.MKVToolnixPath());
-  connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, this, &MainWindow::model_MKVToolnixPath_changed);
+  connect(&m_model, &Model::MKVToolnixPathChanged, this, &MainWindow::model_MKVToolnixPath_changed);
 
   model_Extracting_changed(false);
-  connect(&m_model, &qmkv::model::Model::ExtractingChanged, this, &MainWindow::model_Extracting_changed);
+  connect(&m_model, &Model::ExtractingChanged, this, &MainWindow::model_Extracting_changed);
 
-  _fillComboboxFromEnum<qmkv::extract::chapter_types::ChapterTypes>(ui->cmbChapterType, m_model.ChapterType());
+  _fillComboboxFromEnum<ChapterTypes>(ui->cmbChapterType, m_model.ChapterType());
 
-  _fillComboboxFromEnum<qmkv::extract::extraction_mode::ExtractionMode>(ui->cmbExtractionMode, qmkv::extract::extraction_mode::ExtractionMode::Tracks);
+  _fillComboboxFromEnum<ExtractionMode>(ui->cmbExtractionMode, ExtractionMode::Tracks);
 
 }
 
