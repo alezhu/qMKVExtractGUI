@@ -28,13 +28,7 @@ namespace qmkv::model {
 
     }
 
-    QStringView Model::MKVToolnixPath() const {
-        return m_MKVToolnixPath;
-    }
 
-    void Model::setMKVToolnixPath(const QStringView value) {
-        _setMKVToolnixPath(value, true, true, true);
-    }
 
     bool Model::_setMKVToolnixPath(const QStringView value, const bool check, const bool clearIfError,
                                    const bool showError) {
@@ -64,10 +58,18 @@ namespace qmkv::model {
         emit MKVToolnixPathChanged(m_MKVToolnixPath);
         return result;
     }
+  QAnyStringView Model::MKVToolnixPath() const
+  {
+    return m_MKVToolnixPath;
+  }
 
     void Model::_createExtract() {
         m_extract.reset(m_extractFactory.create(MKVToolnixPath()));
     }
+  void Model::setMKVToolnixPath(const QAnyStringView value)
+  {
+    _setMKVToolnixPath(value, true, true, true);
+  }
 
     void Model::parseCommandLineArguments(const QStringList &arguments) {
         auto args = arguments.join(',');

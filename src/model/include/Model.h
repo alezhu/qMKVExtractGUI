@@ -19,6 +19,7 @@ namespace qmkv::model {
                 const std::function<void(QAnyStringView, QWidget *)> &showErrorMessage,
                 extract::ExtractFactory &extractFactory,
                 QObject *parent = nullptr);
+  Q_PROPERTY_STD_EX(QString, QAnyStringView, MKVToolnixPath);
 
         void parseCommandLineArguments(const QStringList &arguments);
 
@@ -35,7 +36,5 @@ namespace qmkv::model {
 
         void _createExtract();
 
-        bool
-        _setMKVToolnixPath(const QStringView value, const bool check, const bool clearIfError, const bool showError);
-    };
+    bool _setMKVToolnixPath(const QAnyStringView value, const bool check, const bool clearIfError, const bool showError);
 }
