@@ -154,4 +154,16 @@ namespace qmkv::model {
     m_StatusText = value.toString();
     emit StatusTextChanged(value);
   }
+
+  QAnyStringView Model::TotalStatusText() const
+  {
+    return m_TotalStatusText;
+  }
+
+  void Model::setTotalStatusText(const QAnyStringView value)
+  {
+    if(m_TotalStatusText == value) return;
+    m_TotalStatusText = value.toString();
+    emit StatusTextChanged(value);
+  }
 }
