@@ -30,7 +30,7 @@ int Application::start(int argc, char *argv[])
     model.parseCommandLineArguments(cmdArgs);
   }
 
-  MainWindow w{model};
+  MainWindow w{model, sm};
   w.show();
   return app.exec();
 }

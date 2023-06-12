@@ -9,11 +9,15 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-MainWindow::MainWindow(Model &model, QWidget *parent)
-  :
+MainWindow::MainWindow(
+  Model &model,
+  SettingsManager &settingsManager,
+  QWidget *parent
+) :
   QMainWindow(parent),
   ui(new Ui::MainWindow),
-  m_model{model}
+  m_model{model},
+  m_settingsManager{settingsManager}
 {
   ui->setupUi(this);
 
@@ -40,7 +44,7 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
 
   model_TotalStatusProgress_changed(m_model.TotalStatusProgress());
   connect(&m_model, &Model::TotalStatusProgressChanged, this, &MainWindow::model_TotalStatusProgress_changed);
-  
+
   clearStatus();
 }
 

@@ -10,6 +10,7 @@
 using qmkv::extract::chapter_types::ChapterTypes;
 using qmkv::extract::extraction_mode::ExtractionMode;
 using qmkv::model::Model;
+using qmkv::model::SettingsManager;
 
 
 QT_BEGIN_NAMESPACE
@@ -21,7 +22,9 @@ Q_OBJECT
 
 public:
   explicit MainWindow(
-    Model &model, QWidget *parent = nullptr
+    Model &model,
+    SettingsManager &settingsManager,
+    QWidget *parent = nullptr
   );
 
   ~MainWindow() override;
@@ -29,6 +32,7 @@ public:
 private:
   Ui::MainWindow *ui{};
   Model &m_model;
+  SettingsManager &m_settingsManager;
 
   template<typename T>
   void _fillComboboxFromEnum(QComboBox *comboBox, T setCurrent)
