@@ -159,7 +159,7 @@ namespace qmkv::model {
 
   void Model::setStatusText(const QAnyStringView value)
   {
-    if(m_StatusText == value) return;
+    if(!m_StatusText.isNull() && m_StatusText == value) return;
     m_StatusText = value.toString();
     emit StatusTextChanged(value);
   }
@@ -171,7 +171,7 @@ namespace qmkv::model {
 
   void Model::setTotalStatusText(const QAnyStringView value)
   {
-    if(m_TotalStatusText == value) return;
+    if(!m_TotalStatusText.isNull() && m_TotalStatusText == value) return;
     m_TotalStatusText = value.toString();
     emit TotalStatusTextChanged(value);
   }
