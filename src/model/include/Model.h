@@ -20,6 +20,7 @@ namespace qmkv::model {
                 extract::ExtractFactory &extractFactory,
                 QObject *parent = nullptr);
   Q_PROPERTY_STD_EX(QString, QAnyStringView, MKVToolnixPath);
+  Q_PROPERTY_STD(extract::chapter_types::ChapterTypes, ChapterType);
 
         void parseCommandLineArguments(const QStringList &arguments);
 

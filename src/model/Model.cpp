@@ -28,6 +28,7 @@ namespace qmkv::model {
 
     }
 
+    m_ChapterType = settings->ChapterType();
 
 
     bool Model::_setMKVToolnixPath(const QStringView value, const bool check, const bool clearIfError,
@@ -106,4 +107,19 @@ namespace qmkv::model {
     }
 
 
+
+  extract::chapter_types::ChapterTypes Model::ChapterType() const
+  {
+    return m_ChapterType;
+  }
+
+  void Model::setChapterType(const extract::chapter_types::ChapterTypes value)
+  {
+    if(m_ChapterType == value) return;
+    m_ChapterType = value;
+    m_settingsManager->get()->setChapterType(value);
+    m_logger->log(tr("Changing ChapterType"));
+
+    emit ChapterTypeChanged(value);
+  }
 }
