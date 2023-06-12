@@ -143,4 +143,15 @@ namespace qmkv::model {
 
     emit ChapterTypeChanged(value);
   }
+  QAnyStringView Model::StatusText() const
+  {
+    return m_StatusText;
+  }
+
+  void Model::setStatusText(const QAnyStringView value)
+  {
+    if(m_StatusText == value) return;
+    m_StatusText = value.toString();
+    emit StatusTextChanged(value);
+  }
 }

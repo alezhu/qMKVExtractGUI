@@ -11,6 +11,7 @@ namespace qmkv::model {
   Q_OBJECT
 
   Q_PROPERTY_STD_EX(QString, QAnyStringView, MKVToolnixPath);
+  Q_PROPERTY_STD_EX(QString, QAnyStringView, StatusText);
   Q_PROPERTY_STD(bool, Extracting);
   Q_PROPERTY_STD(extract::chapter_types::ChapterTypes, ChapterType);
   public:
