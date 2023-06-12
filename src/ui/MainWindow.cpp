@@ -8,8 +8,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-    connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, ui->txtMKVToolnixPath,
-            [=](QStringView value) { ui->txtMKVToolnixPath->setText(value.toString()); });
 
 void MainWindow::btnBrowseMKVToolnixPath_clicked() {
     auto path = m_model.MKVToolnixPath().toString();
@@ -43,10 +41,18 @@ MainWindow::MainWindow(qmkv::model::Model &model, QWidget *parent) :
 
   setWindowTitle(QString("qMKVExtractGUI v%1 -- by alezhu").arg(QCoreApplication::applicationVersion()));
 
+  model_MKVToolnixPath_changed(m_model.MKVToolnixPath());
+  connect(&m_model, &qmkv::model::Model::MKVToolnixPathChanged, this, &MainWindow::model_MKVToolnixPath_changed);
   _fillComboboxFromEnum<qmkv::extract::chapter_types::ChapterTypes>(ui->cmbChapterType, m_model.ChapterType());
 
   _fillComboboxFromEnum<qmkv::extract::extraction_mode::ExtractionMode>(ui->cmbExtractionMode, qmkv::extract::extraction_mode::ExtractionMode::Tracks);
 
+}
+
+
+void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
+{
+  ui->txtMKVToolnixPath->setText(value.toString());
 }
 void MainWindow::_fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex = -1)
 {

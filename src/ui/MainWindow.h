@@ -42,5 +42,7 @@ private:
 
 
 
+  void model_MKVToolnixPath_changed(QAnyStringView value);
+
     void btnBrowseMKVToolnixPath_clicked();
 };
