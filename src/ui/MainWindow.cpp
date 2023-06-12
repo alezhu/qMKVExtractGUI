@@ -48,3 +48,12 @@ MainWindow::MainWindow(qmkv::model::Model &model, QWidget *parent) :
   ui(new Ui::MainWindow),
   m_model{model}
 {
+void MainWindow::_fillComboboxFromMetaEnum(const QMetaEnum &metaEnum, QComboBox *comboBox, int setCurrentIndex = -1)
+{
+  comboBox->clear();
+  for(int i = 0; i < metaEnum.keyCount(); ++i) {
+    comboBox->addItem(metaEnum.key(i), metaEnum.value(i));
+  }
+  comboBox->setCurrentIndex(setCurrentIndex);
+}
+
