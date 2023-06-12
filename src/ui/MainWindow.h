@@ -12,18 +12,15 @@ class MainWindow : public QMainWindow {
 Q_OBJECT
 
 public:
-    MainWindow(
-            qmkv::model::SettingsManager &settingsManager,
-            qmkv::model::Model &model,
-            QWidget *parent = nullptr
-    );
+  MainWindow(
+    qmkv::model::Model &model, QWidget *parent = nullptr
+  );
 
     ~MainWindow() override;
 
 private:
-    Ui::MainWindow *ui{};
-    qmkv::model::SettingsManager &m_settingsManager;
-    qmkv::model::Model &m_model;
+  Ui::MainWindow *ui{};
+  qmkv::model::Model &m_model;
 
 public slots:
 
