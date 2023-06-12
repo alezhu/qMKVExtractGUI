@@ -58,4 +58,12 @@ private slots:
 
   void model_Extracting_changed(const bool value);
 
+
+  void model_StatusText_changed(QAnyStringView value);
+
+  void model_StatusProgress_changed(uint value);
+
+  void model_TotalStatusText_changed(QAnyStringView value);
+
+  void model_TotalStatusProgress_changed(uint value);
 };

@@ -29,8 +29,18 @@ MainWindow::MainWindow(Model &model, QWidget *parent)
 
   _fillComboboxFromEnum<ExtractionMode>(ui->cmbExtractionMode, ExtractionMode::Tracks);
 
-}
+  model_StatusText_changed(m_model.StatusText());
+  connect(&m_model, &Model::StatusTextChanged, this, &MainWindow::model_StatusText_changed);
 
+  model_TotalStatusText_changed(m_model.TotalStatusText());
+  connect(&m_model, &Model::TotalStatusTextChanged, this, &MainWindow::model_TotalStatusText_changed);
+
+  model_StatusProgress_changed(m_model.StatusProgress());
+  connect(&m_model, &Model::StatusProgressChanged, this, &MainWindow::model_StatusProgress_changed);
+
+  model_TotalStatusProgress_changed(m_model.TotalStatusProgress());
+  connect(&m_model, &Model::TotalStatusProgressChanged, this, &MainWindow::model_TotalStatusProgress_changed);
+}
 
 void MainWindow::model_MKVToolnixPath_changed(QAnyStringView value)
 {
@@ -81,6 +91,30 @@ void MainWindow::cmbChapterType_currentIndexChanged(int index)
   auto metaEnum = QMetaEnum::fromType<qmkv::extract::chapter_types::ChapterTypes>();
   auto value = metaEnum.value(index);
   m_model.setChapterType(static_cast<qmkv::extract::chapter_types::ChapterTypes>(value));
+}
+
+
+void MainWindow::model_StatusText_changed(QAnyStringView value)
+{
+  ui->lblStatus->setText(value.toString());
+}
+
+void MainWindow::model_TotalStatusText_changed(QAnyStringView value)
+{
+  ui->lblTotalStatus->setText(value.toString());
+}
+
+void MainWindow::model_StatusProgress_changed(uint value)
+{
+  ui->prgBrStatus->setValue(static_cast<int>(value));
+  ui->prgBrStatus->setVisible(value != 0);
+
+}
+
+void MainWindow::model_TotalStatusProgress_changed(uint value)
+{
+  ui->prgBrTotalStatus->setValue(static_cast<int>(value));
+  ui->prgBrTotalStatus->setVisible(value != 0);
 }
 
 
