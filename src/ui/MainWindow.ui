@@ -95,6 +95,8 @@
          <property name="readOnly">
           <bool>true</bool>
          </property>
+                                <widget class="QComboBox" name="cmbChapterType"/>
+                                <widget class="QComboBox" name="cmbExtractionMode"/>
         </widget>
        </item>
        <item>
@@ -236,7 +238,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox"/>
        </item>
        <item>
         <widget class="QLabel" name="label_2">
@@ -246,7 +247,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox_2"/>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_5">
