@@ -11,7 +11,6 @@ int Application::start(int argc, char *argv[])
   QCoreApplication::setOrganizationName("Alezhu");
   QCoreApplication::setApplicationName("qMKVExtractGUI");
 
-    MainWindow w{sm, model};
   qmkv::extract::Logger logger;
   qmkv::extract::Helper helper;
   QApplication app(argc, argv);
@@ -24,6 +23,8 @@ int Application::start(int argc, char *argv[])
   if(!cmdArgs.isEmpty()) {
     model.parseCommandLineArguments(cmdArgs);
   }
+
+  MainWindow w{model};
   w.show();
   return app.exec();
 }
